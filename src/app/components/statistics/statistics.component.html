@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2>İstatistikler</h2>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3>Satış/Teklif Oranı</h3>
+        <p>{{ statusKRatio | number:'1.2-2' }}%</p>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3>En Pahalı 3 Satış</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Policy Number</th>
+              <th>Amount</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of top3ExpensivePolicies">
+              <td>{{ policy.policyNumber }}</td>
+              <td>{{ policy.amount }}</td>
+              <td>{{ policy.startDate | date }}</td>
+              <td>{{ policy.endDate | date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

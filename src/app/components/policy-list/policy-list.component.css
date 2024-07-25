@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    align-items: center; /* İçeriği dikey olarak ortalar */
+    justify-content: space-between; /* Arama çubuğu ve başlığı yan yana yerleştirir */
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+}
+
+.headername {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px; /* Yazı boyutunu belirleyin */
+    margin: 0;
+    text-align: center;
+    flex: 1; /* Headername'in kullanılabilir alanı kaplamasını sağlar */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.search-input {
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    padding: 8px;
+    font-size: 14px;
+    outline: none;
+    width: 140px;
+}
+
+.search-button {
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}

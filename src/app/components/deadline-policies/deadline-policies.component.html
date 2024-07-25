@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>5 Gün İçinde Süresi Dolan Poliçeler</h2>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Policy Number</th>
+          <th>Branch Code</th>
+          <th>Amount</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Customer Name</th>
+          <th>Customer Surname</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of expiringPolicies">
+          <td>{{policy.policyNumber}}</td>
+          <td>{{policy.branchCode}}</td>
+          <td>{{policy.amount}}</td>
+          <td>{{policy.startDate | date}}</td>
+          <td>{{policy.endDate | date}}</td>
+          <td>{{policy.customerDetailDto.name}}</td>
+          <td>{{policy.customerDetailDto.surname}}</td>
+          <td>
+            <button (click)="showDetails(policy)" class="btn btn-primary">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
