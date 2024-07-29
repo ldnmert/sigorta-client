@@ -1,0 +1,25 @@
+<div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <h4>Policy Details</h4>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" [(ngModel)]="cardNumber" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" [(ngModel)]="cvv" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="text" id="expiryDate" [(ngModel)]="expiryDate" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="cardHolder">Card Holder</label>
+        <input type="text" id="cardHolder" [(ngModel)]="cardHolder" class="form-control" />
+      </div>
+      <div class="modal-footer">
+        <button (click)="submitPolicyDetails()" class="btn btn-primary">Gönder</button>
+        <button (click)="closeModal()" class="btn btn-secondary">Kapat</button>
+      </div>
+    </div>
+  </div>

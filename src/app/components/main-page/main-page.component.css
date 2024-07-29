@@ -20,3 +20,68 @@ th {
 button {
   margin: 5px 0;
 }
+
+body.modal-open {
+  overflow: hidden; /* Kaydırmayı engelle */
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* İki sütun düzeni */
+  grid-template-rows: repeat(2, auto); /* İki satır düzeni */
+  gap: 1rem; /* Bölümler arasındaki boşluk */
+  height: calc(100vh - 60px); /* Header eklenmesi için yüksekliği azalt */
+  padding: 1rem; /* Genel padding */
+  box-sizing: border-box; /* Padding ve border'ı box genişliğine dahil et */
+  overflow: auto; /* Tüm dashboard içeriği için scroll */
+}
+
+/* Modern ve şık görünüm için dashboard-item stili */
+.dashboard-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0; /* Daha açık sınır rengi */
+  border-radius: 0.5rem; /* Köşe yuvarlama */
+  padding: 1rem; /* İç padding */
+  overflow: hidden; /* Taşmaları engelle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Daha hafif gölge */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animasyon ekleyerek etkileşim */
+  max-height: calc(100vh / 2 - 2rem); /* Maksimum yükseklik */
+  overflow-y: auto; /* Dikey kaydırma çubuğunu etkinleştir */
+}
+
+/* Hover durumunda dashboard-item stil değişiklikleri */
+.dashboard-item:hover {
+  transform: translateY(-3px); /* Hover etkisi için yukarı kaydırma */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); /* Daha belirgin gölge */
+}
+
+/* Responsive tasarım için */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* Tek sütunlu düzen */
+    grid-template-rows: repeat(4, auto); /* Dört satır */
+  }
+}
+
+@media (min-width: 992px) {
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr); /* İki sütun düzeni */
+    grid-template-rows: repeat(2, auto); /* İki satır düzeni */
+  }
+}
+
+.profile{
+position: absolute;
+left: 79%;
+bottom: 88%;
+z-index: 100;
+}
+
+.newpolicy{
+  position: relative;
+  display: inline-block;
+  left: 45%;
+  top: 1%;
+  
+
+}

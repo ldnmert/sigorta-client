@@ -7,4 +7,5 @@ export interface PolicyDto {
   endDate: string;
   policyNumber: string;
   customerDetailDto: CustomerDetailDto;
+  status: string;
 }

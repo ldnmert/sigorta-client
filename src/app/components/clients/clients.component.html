@@ -1,6 +1,6 @@
-<div class="container">
-  <h2>Müşteri Listesi</h2>
-  <table class="table table-bordered">
+<div class="container my-3">
+  <h4 class="mb-3">Müşteri Listesi</h4>
+  <table class="table table-sm table-bordered">
     <thead>
       <tr>
         <th>Kimlik Numarası</th>
@@ -10,7 +10,7 @@
         <th>Telefon</th>
         <th>Şehir</th>
         <th>İlçe</th>
-        <th>Actions</th>
+        <th>Teklifler</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
         <td>{{customer.city}}</td>
         <td>{{customer.district}}</td>
         <td>
-          <button (click)="viewOffers(customer)" class="btn btn-primary">Teklifleri Görüntüle</button>
+          <button (click)="viewOffers(customer)" class="btn btn-secondary btn-sm">Teklifler</button>
         </td>
       </tr>
     </tbody>
@@ -35,20 +35,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Teklifler - {{selectedCustomer?.name}} {{selectedCustomer?.surname}}</h5>
-          <button type="button" class="close" (click)="closeModal()">
-            <span>&times;</span>
-          </button>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
         </div>
         <div class="modal-body">
-          <table class="table table-bordered">
+          <table class="table table-sm table-bordered">
             <thead>
               <tr>
-                <th>Policy Number</th>
-                <th>Branch Code</th>
-                <th>Amount</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Actions</th>
+                <th>Numara</th>
+                <th>Şube Kodu</th>
+                <th>Tutar</th>
+                <th>Başlangıç</th>
+                <th>Bitiş</th>
+                <th>Durum</th>
               </tr>
             </thead>
             <tbody>
@@ -57,28 +55,26 @@
                   <td>{{policy.policyNumber}}</td>
                   <td>{{policy.branchCode}}</td>
                   <td>{{policy.amount}}</td>
-                  <td>{{policy.startDate | date}}</td>
-                  <td>{{policy.endDate | date}}</td>
-                  <td> 
-                    <button class="btn btn-success">Poliçeleştir</button>
+                  <td>{{policy.startDate | date:'shortDate'}}</td>
+                  <td>{{policy.endDate | date:'shortDate'}}</td>
+                  <td>
+                    <button class="btn btn-success btn-sm">Poliçeleştir</button>
                   </td>
                 </tr>
                 <tr *ngIf="!isMyPolicy(policy)">
                   <td>{{policy.policyNumber}}</td>
                   <td>{{policy.branchCode}}</td>
                   <td>{{policy.amount}}</td>
-                  <td>{{policy.startDate | date}}</td>
-                  <td>{{policy.endDate | date}}</td>
-                  <td> 
-                    Başkalarının Teklifi
-                  </td>
+                  <td>{{policy.startDate | date:'shortDate'}}</td>
+                  <td>{{policy.endDate | date:'shortDate'}}</td>
+                  <td>Başka Teklif</td>
                 </tr>
               </ng-container>
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="closeModal()">Kapat</button>
         </div>
       </div>
     </div>

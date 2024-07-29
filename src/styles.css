@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+/* Genel ayarlar */
+.container {
+    max-width: 1200px; /* Maksimum genişlik */
+    margin: 0 auto; /* Ortalamayı sağlar */
+    padding: 0 1rem; /* Kenar boşlukları */
+  }
+  
+  h2 {
+    font-size: 1.25rem; /* Başlık font boyutunu küçült */
+    margin-bottom: 0.75rem; /* Başlık ve içerik arasına boşluk ekle */
+    font-weight: 600; /* Başlık kalınlığı */
+  }
+  
+  .table {
+    font-size: 0.875rem; /* Tablo font boyutunu küçült */
+    width: 100%; /* Tablo genişliğini %100 yap */
+  }
+  
+  .table th, .table td {
+    padding: 0.5rem; /* Hücre içi boşlukları küçült */
+  }
+  
+  .btn {
+    font-size: 0.75rem; /* Buton font boyutunu küçült */
+    padding: 0.25rem 0.5rem; /* Buton içi boşlukları küçült */
+  }
+  
+  .modal-dialog {
+    max-width: 80%; /* Modal genişliğini %80 yap */
+    margin: 1.25rem auto; /* Modalın ekran ortasında yer almasını sağla */
+  }
+  
+  .modal-content {
+    border-radius: 0.375rem; /* Köşe yuvarlaklığı */
+  }
+  
+  .modal-header, .modal-body, .modal-footer {
+    padding: 0.75rem; /* Padding ayarlarını küçült */
+  }
+  
+  .modal-body table {
+    font-size: 0.75rem; /* Modal içindeki tablonun font boyutunu küçült */
+  }
+  
+  /* Dashboard Grid Ayarları */
+  .dashboard-item {
+    background: #fff; /* Arka plan rengi */
+    border: 1px solid #ddd; /* Çerçeve rengi */
+    border-radius: 0.375rem; /* Köşe yuvarlaklığı */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    padding: 1rem; /* İçerik boşluğu */
+    margin: 0.5rem; /* Dış boşluk */
+  }
+  
+  .dashboard-item h3 {
+    font-size: 1.125rem; /* Alt başlık font boyutu */
+    margin-bottom: 0.5rem; /* Başlık ve içerik arasına boşluk ekle */
+  }
+  
+  .dashboard-item p {
+    font-size: 0.875rem; /* Metin font boyutu */
+    color: #555; /* Metin rengi */
+  }
+  
+  /* Renk ve Hover Efektleri */
+  .dashboard-item:hover {
+    background: #f9f9f9; /* Hover arka plan rengi */
+    border-color: #ccc; /* Hover çerçeve rengi */
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

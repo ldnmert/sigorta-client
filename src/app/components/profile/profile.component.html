@@ -1,0 +1,19 @@
+<div *ngIf="userInfo" class="container my-4">
+    <div class="profile-card">
+      <div class="profile-content d-flex align-items-center">
+        <img 
+          *ngIf="userInfo.photo" 
+          [src]="userInfo.photo" 
+          alt="Profile Photo" 
+          class="profile-photo"
+        />
+        <div class="profile-info d-flex align-items-center ms-3">
+          <h2 class="card-title">
+            {{ userInfo.firstName }} {{ userInfo.lastName }}
+          </h2>
+          <button (click)="logout()" class="btn btn-danger ms-3">Çıkış Yap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

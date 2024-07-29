@@ -1,0 +1,106 @@
+/* Modal diyalog */
+.modal-dialog {
+  position: fixed; /* Ekranın üstünde kalmasını sağlar */
+  top: 50%; /* Ekranın ortasına hizalar */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Tam olarak ortalar */
+  max-width: 500px; /* Modalın maksimum genişliği */
+  width: 90%; /* Modal genişliği yüzde 90 */
+  margin: 0; /* Margin yok */
+  z-index: 1050; /* Diğer öğelerin üstünde görünmesini sağlar */
+}
+
+/* Modal içerik */
+.modal-content {
+  border-radius: 0.375rem; /* Köşeleri yuvarlatır */
+  background-color: #ffffff; /* Beyaz arka plan */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Daha belirgin gölge */
+  overflow: hidden; /* İçeriğin taşmasını engeller */
+}
+
+/* Modal başlık ve kapatma butonu */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #007bff; /* Canlı mavi arka plan */
+  color: #ffffff; /* Beyaz metin rengi */
+  border-bottom: 2px solid #0056b3; /* Koyu mavi alt sınır */
+  text-align: center; /* Başlığı ortalar */
+}
+
+.modal-header .modal-title {
+  font-size: 1.25rem; /* Başlık boyutu */
+  margin: 0; /* Margin yok */
+}
+
+/* Modal body */
+.modal-body {
+  padding: 1rem;
+  text-align: center; /* İçeriği ortalar */
+}
+
+/* Form alanları için genel stil */
+.form-section {
+  margin-bottom: 1rem;
+}
+
+h6 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #333; /* Koyu gri metin rengi */
+  text-align: center; /* Başlıkları ortalar */
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center; /* Form alanlarını ortalar */
+}
+
+.form-group {
+  flex: 1 1 calc(50% - 0.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input.form-control,
+.form-group select.form-control {
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da; /* Gri sınır */
+}
+
+/* Araç Formu için alan düzeni */
+.vehicle-form .form-group {
+  flex: 1 1 calc(33.33% - 0.5rem);
+}
+
+/* Butonlar */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #28a745; /* Canlı yeşil */
+  color: #ffffff; /* Beyaz metin rengi */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #218838; /* Koyu yeşil */
+}
+
+.close {
+  font-size: 1.25rem;
+  color: #ffffff; /* Beyaz metin rengi */
+  border: none;
+  background: none;
+  cursor: pointer;
+}

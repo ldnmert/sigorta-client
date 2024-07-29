@@ -1,12 +1,24 @@
 
+<app-profile class = "profile"></app-profile>
+<div class="newpolicy">
+<button (click)="openNewPolicyModal()" class="btn btn-primary">Yeni Poliçe Oluştur</button>
+</div>
+<!-- Modal Component Kullanımı -->
+<app-new-policy *ngIf="isNewPolicyModalOpen" (close)="closeNewPolicyModal()"></app-new-policy>
 
 
 
-
-<app-policy-list></app-policy-list>
-
-<!-- --------------------- -->
-
-<app-deadline-policies></app-deadline-policies>
-<app-statistics></app-statistics>
-<app-clients></app-clients>
+<div class="dashboard">
+    <div class="dashboard-item">
+      <app-policy-list></app-policy-list>
+    </div>
+    <div class="dashboard-item">
+      <app-deadline-policies></app-deadline-policies>
+    </div>
+    <div class="dashboard-item">
+      <app-statistics></app-statistics>
+    </div>
+    <div class="dashboard-item">
+      <app-clients></app-clients>
+    </div>
+  </div>

@@ -1,0 +1,120 @@
+<div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Yeni Poliçe Oluştur</h5>
+      <button type="button" class="close" (click)="closeModal()">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Müşteri Formu -->
+      <form [formGroup]="customerForm" *ngIf="!showVehicleForm" class="form-section">
+        <h6>Müşteri Bilgileri</h6>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="identificationNumber">TC Kimlik Numarası</label>
+            <input id="identificationNumber" formControlName="identificationNumber" type="text" class="form-control" maxlength="11" (input)="fetchCustomerData($event)">
+          </div>
+          <div class="form-group">
+            <label for="name">Ad</label>
+            <input id="name" formControlName="name" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="surname">Soyad</label>
+            <input id="surname" formControlName="surname" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" formControlName="email" type="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input id="phone" formControlName="phone" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="city">Şehir</label>
+            <input id="city" formControlName="city" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="district">İlçe</label>
+            <input id="district" formControlName="district" type="text" class="form-control">
+          </div>
+        </div>
+      </form>
+
+      <!-- Poliçe Formu -->
+      <form [formGroup]="policyForm" *ngIf="!showVehicleForm" class="form-section">
+        <h6>Poliçe Bilgileri</h6>
+        <div class="form-group">
+          <label for="policyType">Kasko Türü</label>
+          <select id="policyType" formControlName="policyType" class="form-control">
+            <option value="" disabled>Seçiniz</option>
+            <option value="traffic">Trafik - 310</option>
+            <option value="dask">Dask - 199</option>
+            <option value="health">Sağlık - 610</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="proceedToVehicleForm()">İlerle</button>
+      </form>
+
+      <!-- Araç Formu -->
+      <form [formGroup]="vehicleForm" *ngIf="showVehicleForm" class="form-section">
+        <h6>Araç Bilgileri</h6>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="year">Yıl</label>
+            <select id="year" formControlName="year" class="form-control">
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="make">Marka</label>
+            <select id="make" formControlName="make" class="form-control" (change)="onMakeChange($event)">
+              <option *ngFor="let make of makes" [value]="make">{{ make }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="model">Model</label>
+            <select id="model" formControlName="model" class="form-control">
+              <option *ngFor="let model of models" [value]="model">{{ model }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vehicleCode">Araç Kodu</label>
+            <input id="vehicleCode" formControlName="vehicleCode" type="text" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="amount">Tutar</label>
+            <input id="amount" formControlName="amount" type="text" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="plateCityCode">Plaka Şehir Kodu</label>
+            <input id="plateCityCode" formControlName="plateCityCode" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="plateCode">Plaka Kodu</label>
+            <input id="plateCode" formControlName="plateCode" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="engineNumber">Motor Numarası</label>
+            <input id="engineNumber" formControlName="engineNumber" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="chassisNumber">Şasi Numarası</label>
+            <input id="chassisNumber" formControlName="chassisNumber" type="text" class="form-control">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="onFormSubmit()">Araç Bilgilerini Göster</button>
+      </form>
+
+      <!-- Teklif Gönder Butonu -->
+      <button *ngIf="showDetails" type="button" class="btn btn-primary" (click)="submitOffer()">Teklif Gönder</button>
+    </div>
+  </div>
+</div>
