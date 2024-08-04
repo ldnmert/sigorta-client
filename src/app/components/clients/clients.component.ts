@@ -14,6 +14,7 @@ export class ClientsComponent {
   selectedCustomerPolicies: PolicyCustomer[] = [];
   selectedCustomer: CustomerDetailDto | null = null;
   isModalOpen: boolean = false;
+  searchTerm: string = '';
 
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) { }
 
@@ -25,6 +26,16 @@ export class ClientsComponent {
     this.customerService.getCustomers().subscribe(data => {
       this.customers = data;
     });
+  }
+
+  searchCustomer(): void {
+    if (this.searchTerm.trim() === '') {
+      this.loadCustomers(); // Eğer arama terimi boşsa, tüm müşterileri yükle
+    } else {
+      this.customerService.searchCustomerByIdentificationNumber(this.searchTerm).subscribe(data => {
+        this.customers = data;
+      });
+    }
   }
 
   viewOffers(customer: CustomerDetailDto): void {

@@ -1,9 +1,9 @@
 <div class="container my-3">
   <h4 class="mb-3">İstatistikler</h4>
 
-  <div class="mb-3">
+  <div class="mb-4">
     <h5>Satış/Teklif Oranı</h5>
-    <p>{{ statusKRatio | number:'1.2-2' }}%</p>
+    <p class="fs-4 text-primary">{{ statusKRatio | number:'1.2-2' }}%</p>
   </div>
 
   <div>
@@ -20,7 +20,7 @@
       <tbody>
         <tr *ngFor="let policy of top3ExpensivePolicies">
           <td>{{ policy.policyNumber }}</td>
-          <td>{{ policy.amount }}</td>
+          <td>{{ policy.amount | currency:'TRY' }}</td>
           <td>{{ policy.startDate | date:'shortDate' }}</td>
           <td>{{ policy.endDate | date:'shortDate' }}</td>
         </tr>

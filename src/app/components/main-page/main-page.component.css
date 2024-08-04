@@ -51,7 +51,8 @@ body.modal-open {
 
 /* Hover durumunda dashboard-item stil değişiklikleri */
 .dashboard-item:hover {
-  transform: translateY(-3px); /* Hover etkisi için yukarı kaydırma */
+  transform: translateY(-3px); 
+  /* Hover etkisi için yukarı kaydırma */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); /* Daha belirgin gölge */
 }
 

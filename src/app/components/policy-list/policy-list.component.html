@@ -69,7 +69,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Customer</th>
-        <th>Actions</th>
+        <th>Müşteri</th>
         <th>Policy Details</th> <!-- Yeni sütun -->
       </tr>
     </thead>
@@ -83,7 +83,7 @@
         <td>{{searchedPolicy.customerDetailDto.name}} {{searchedPolicy.customerDetailDto.surname}}</td>
         <td>
           <!-- Eski Details butonu kalacak -->
-          <button (click)="showDetails(searchedPolicy)" class="btn btn-primary btn-sm">Details</button>
+          <button (click)="showDetails(searchedPolicy)" class="btn btn-primary btn-sm">Detay</button>
         </td>
         <td>
           <!-- Yeni Policy Details butonu -->
@@ -105,13 +105,13 @@
         <tr *ngFor="let policy of policies">
           <td>{{policy.policyNumber}}</td>
           <td>{{policy.branchCode}}</td>
-          <td>{{policy.amount | currency}}</td>
+          <td>{{ policy.amount | currency:'TRY':'symbol':'1.0-2' }}</td>
           <td>{{policy.startDate | date:'shortDate'}}</td>
           <td>{{policy.endDate | date:'shortDate'}}</td>
           <td>{{policy.customerDetailDto.name}} {{policy.customerDetailDto.surname}}</td>
           <td>
             <!-- Eski Details butonu kalacak -->
-            <button (click)="showDetails(policy)" class="btn btn-primary btn-sm">Details</button>
+            <button (click)="showDetails(policy)" class="btn btn-primary btn-sm">Detay</button>
           </td>
           <td>
             <!-- Yeni Policy Details butonu -->
@@ -125,7 +125,7 @@
             [attr.disabled]="policy.status === 'K' ? true : null"
             class="btn btn-sm"
           >
-            {{ policy.status === 'K' ? 'Poliçelendı' : 'Policy Details' }}
+            {{ policy.status === 'K' ? 'Poliçelendi' : 'Poliçelendir' }}
           </button>
           </td>
         </tr>

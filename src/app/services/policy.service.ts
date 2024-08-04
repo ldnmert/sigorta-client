@@ -69,7 +69,12 @@ export class PolicyService {
   getStatusKRatio(): Observable<number> {
     const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
+    if(this.authService.getUserRole() == "ROLE_USER"){
     return this.http.get<number>(`${this.apiUrl}/status-ratio`, { headers });
+    }
+    else{
+      return this.http.get<number>("http://localhost:8080/api/v1/admin/ratio",{headers})
+    }
   }
 
   getTop3ExpensivePolicies(): Observable<PolicyDto[]> {

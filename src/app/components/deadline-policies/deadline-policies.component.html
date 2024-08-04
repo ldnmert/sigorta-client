@@ -17,7 +17,7 @@
       <tr *ngFor="let policy of expiringPolicies">
         <td>{{policy.policyNumber}}</td>
         <td>{{policy.branchCode}}</td>
-        <td>{{policy.amount}}</td>
+        <td>{{policy.amount | currency:'TRY':'symbol':'1.0-2' }}</td>
         <td>{{policy.startDate | date:'shortDate'}}</td>
         <td>{{policy.endDate | date:'shortDate'}}</td>
         <td>{{policy.customerDetailDto.name}}</td>
