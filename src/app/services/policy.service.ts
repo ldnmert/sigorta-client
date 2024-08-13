@@ -10,9 +10,9 @@ import { AuthService } from './auth.service';
 export class PolicyService {
  
 
-  private apiUrlPayment = "http://localhost:8080/api/v1/payment"
-  private apiUrl = 'http://localhost:8080/policy';
-  private apiVehicleUrl = 'http://localhost:8080/api/v1/insurance/car'
+  private apiUrlPayment = "http://localhost:8080/v1/payment"
+  private apiUrl = 'http://localhost:8080/v1/policy';
+  private apiVehicleUrl = 'http://localhost:8080/v1/vehicle'
 
   constructor(private http: HttpClient, private authService:AuthService) { }
 
@@ -48,7 +48,8 @@ export class PolicyService {
   }
 
   else{
-    return this.http.get<PolicyDto[]>("http://localhost:8080/api/v1/admin/get-policies" , { params, headers });
+
+    return this.http.get<PolicyDto[]>("http://localhost:9119/api/v1/admin/get-policies" , { params, headers });
   }
     
   }
@@ -62,7 +63,8 @@ export class PolicyService {
     return this.http.get<PolicyDto[]>(`${this.apiUrl}/expiring-policies`, { headers });
     }
     else{
-      return this.http.get<PolicyDto[]>("http://localhost:8080/api/v1/admin/expiringPolicies", {headers});
+      console.log("daweq" + this.authService.getUserRole());
+      return this.http.get<PolicyDto[]>("http://localhost:9119/api/v1/admin/expiringPolicies", {headers});
     }
   }
 
@@ -73,20 +75,20 @@ export class PolicyService {
     return this.http.get<number>(`${this.apiUrl}/status-ratio`, { headers });
     }
     else{
-      return this.http.get<number>("http://localhost:8080/api/v1/admin/ratio",{headers})
+      return this.http.get<number>("http://localhost:9119/api/v1/admin/ratio",{headers})
     }
   }
 
   getTop3ExpensivePolicies(): Observable<PolicyDto[]> {
-    const token = localStorage.getItem('authToken'); // Token'ı localStorage'dan alıyoruz
+    const token = localStorage.getItem('authToken'); 
     const headers = { 'Authorization': `Bearer ${token}` };
     return this.http.get<PolicyDto[]>(`${this.apiUrl}/top-three-sell`, { headers });
   }
 
   enablePolicy(policyNumber: string, payload: any): Observable<any> {
-    const token = localStorage.getItem('authToken'); // Token'ı localStorage'dan alıyoruz
+    const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.post<any>(`${this.apiUrlPayment}/enable-policy`, payload, {
+    return this.http.post<any>(`${this.apiUrlPayment}`, payload, {
       headers: headers,
       params: { policyNumber },
     });

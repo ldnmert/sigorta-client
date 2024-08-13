@@ -10,7 +10,9 @@ import { PolicyService } from '../../services/policy.service';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
+
 export class MainPageComponent {
+
   isNewPolicyModalOpen: boolean = false;
 
   constructor(private renderer: Renderer2) {}

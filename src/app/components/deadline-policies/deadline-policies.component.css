@@ -1,7 +1,31 @@
-/* .container {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-  }
+.table th, .table td {
+  vertical-align: middle;
+}
 
-   */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa; /* Light gray background for odd rows */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Slightly darker gray for hovered rows */
+}
+
+.table-dark th, .table-dark td {
+  color: #fff; /* White text color for dark table header */
+}
+
+.btn-info {
+  background-color: #17a2b8; /* Custom button color */
+  border-color: #17a2b8; /* Custom border color */
+}
+
+.btn-info:hover {
+  background-color: #138496; /* Darker shade on hover */
+  border-color: #117a8b; /* Darker border on hover */
+}
+
+/* .container {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+} */

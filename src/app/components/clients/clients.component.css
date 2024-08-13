@@ -1,15 +1,67 @@
+.container {
+  padding: 15px; /* Reduced padding for tighter layout */
+}
+
+h4 {
+  margin-bottom: 0; /* Removed bottom margin from heading */
+}
+
 .search-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
+  gap: 1rem; /* Space between input and button */
 }
 
 .search-input {
-  width: 200px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
+  flex: 1; /* Input takes remaining space */
 }
 
 .search-button {
-  height: 30px; /* Match height with the input */
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.table {
+  margin-bottom: 0; /* Remove bottom margin from table */
+}
+
+.table-dark th, .table-dark td {
+  color: #fff; /* White text for dark table header */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa; /* Light gray for odd rows */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Slightly darker gray on hover */
+}
+
+.modal-content {
+  border-radius: 0.5rem; /* Rounded corners for modal */
+}
+
+.modal-header {
+  background-color: #007bff; /* Primary blue for header */
+  border-bottom: none; /* Remove bottom border */
+}
+
+.modal-title {
+  font-size: 1.25rem; /* Slightly larger font for title */
+}
+
+.btn-close {
+  filter: invert(1); /* White close button */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Custom primary color */
+  border: none; /* Remove border */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Custom secondary color */
+  border: none; /* Remove border */
+}
+
+.btn-success {
+  background-color: #28a745; /* Custom success color */
+  border: none; /* Remove border */
 }

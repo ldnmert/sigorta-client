@@ -1,30 +1,32 @@
-<div class="container my-3">
-  <h4 class="mb-3">İstatistikler</h4>
+<div class="container my-1">
+  <h2 class="mb-4 text-primary">İstatistikler</h2>
 
-  <div class="mb-4">
-    <h5>Satış/Teklif Oranı</h5>
-    <p class="fs-4 text-primary">{{ statusKRatio | number:'1.2-2' }}%</p>
-  </div>
+  <div class="mb-4 d-flex align-items-center">
+    <div class="me-4">
+      <h4>Satış/Teklif Oranı</h4>
+      <p class="fs-3 text-success fw-bold">{{ statusKRatio | number:'1.2-2' }}%</p>
+    </div>
 
-  <div>
-    <h5>En Pahalı 3 Satış</h5>
-    <table class="table table-sm table-bordered">
-      <thead>
-        <tr>
-          <th>Numara</th>
-          <th>Tutar</th>
-          <th>Başlangıç</th>
-          <th>Bitiş</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let policy of top3ExpensivePolicies">
-          <td>{{ policy.policyNumber }}</td>
-          <td>{{ policy.amount | currency:'TRY' }}</td>
-          <td>{{ policy.startDate | date:'shortDate' }}</td>
-          <td>{{ policy.endDate | date:'shortDate' }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="flex-grow-1">
+      <h4>En Pahalı 3 Satış</h4>
+      <table class="table table-sm table-striped table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Numara</th>
+            <th>Tutar</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of top3ExpensivePolicies">
+            <td>{{ policy.policyNumber }}</td>
+            <td>{{ policy.amount | currency:'TRY' }}</td>
+            <td>{{ policy.startDate | date:'shortDate' }}</td>
+            <td>{{ policy.endDate | date:'shortDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

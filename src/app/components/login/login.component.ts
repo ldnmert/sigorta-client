@@ -36,7 +36,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe({
       next: (x) => {
-        // Başarılı login sonrası ana sayfaya yönlendirin
+
   
          
         this.router.navigate(['/main-page']);

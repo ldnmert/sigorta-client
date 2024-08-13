@@ -6,8 +6,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
-  private userInfoUrl = 'http://localhost:8080/api/v1/user/details';
+
+  private userInfoUrl = 'http://localhost:8080/v1/user/details';
 
   constructor(private http: HttpClient) { }
 

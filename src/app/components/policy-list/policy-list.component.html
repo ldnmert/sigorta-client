@@ -1,67 +1,71 @@
-<div class="container my-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Poliçe Listesi</h2>
-    <div class="d-flex align-items-center">
-      <input 
-        type="text" 
-        class="form-control me-2" 
-        placeholder="Policy Number ile ara..." 
-        [(ngModel)]="searchText"
-      />
-      <button (click)="searchPolicies()" class="btn btn-primary btn-sm">Ara</button>
+<div class="container my-3">
+  <!-- Title -->
+  <h2 class="text-primary text-center mb-3">Poliçe Listesi</h2>
+
+  <!-- Search, Filter, and Sort -->
+  <div class="d-flex flex-column align-items-center mb-3">
+    <div class="d-flex justify-content-center align-items-center mb-3 w-100">
+      <!-- Search -->
+      <div class="d-flex align-items-center me-2">
+        <input 
+          type="text" 
+          class="form-control me-2" 
+          placeholder="Policy Number ile ara..." 
+          [(ngModel)]="searchText"
+        />
+        <button (click)="searchPolicies()" class="btn btn-success btn-sm">Ara</button>
+      </div>
+
+      <!-- Filters and Sorting -->
+      <div class="d-flex align-items-center">
+        <div class="btn-group btn-group-sm me-2" role="group" aria-label="Status Filter">
+          <input 
+            type="radio" 
+            id="statusAll" 
+            value="H" 
+            [(ngModel)]="statusFilter"
+            (change)="onStatusChange('H')"
+            class="btn-check"
+            checked
+          />
+          <label class="btn btn-outline-info" for="statusAll">Hepsi</label>
+
+          <input 
+            type="radio" 
+            id="statusT" 
+            value="T" 
+            [(ngModel)]="statusFilter"
+            (change)="onStatusChange('T')"
+            class="btn-check"
+          />
+          <label class="btn btn-outline-info" for="statusT">Teklif</label>
+
+          <input 
+            type="radio" 
+            id="statusK" 
+            value="K" 
+            [(ngModel)]="statusFilter"
+            (change)="onStatusChange('K')"
+            class="btn-check"
+          />
+          <label class="btn btn-outline-info" for="statusK">Poliçe</label>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <label for="sortOption" class="form-label me-2 mb-0 text-secondary">Sıralama:</label>
+          <select class="form-select form-select-sm" id="sortOption" [(ngModel)]="sortOption" (change)="onSortChange($event)">
+            <option value="recent">Son Poliçeler</option>
+            <option value="amountAsc">Fiyata Göre Artan</option>
+            <option value="amountDesc">Fiyata Göre Azalan</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-      <label for="statusFilter" class="form-label me-2">Durum:</label>
-      <div class="form-check form-check-inline">
-        <input 
-          class="form-check-input" 
-          type="radio" 
-          id="statusAll" 
-          value="H" 
-          [(ngModel)]="statusFilter"
-          (change)="onStatusChange('H')"
-          checked
-        />
-        <label class="form-check-label" for="statusAll">Hepsi</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input 
-          class="form-check-input" 
-          type="radio" 
-          id="statusT" 
-          value="T" 
-          [(ngModel)]="statusFilter"
-          (change)="onStatusChange('T')"
-        />
-        <label class="form-check-label" for="statusT">T</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input 
-          class="form-check-input" 
-          type="radio" 
-          id="statusK" 
-          value="K" 
-          [(ngModel)]="statusFilter"
-          (change)="onStatusChange('K')"
-        />
-        <label class="form-check-label" for="statusK">K</label>
-      </div>
-    </div>
-    <div>
-      <label for="sortOption" class="form-label me-2">Sıralama:</label>
-      <select class="form-select form-select-sm" id="sortOption" [(ngModel)]="sortOption" (change)="onSortChange($event)">
-        <option value="recent">Son Poliçeler</option>
-        <option value="amountAsc">Fiyata Göre Artan</option>
-        <option value="amountDesc">Fiyata Göre Azalan</option>
-      </select>
-    </div>
-  </div>
-
-  <table class="table table-sm table-striped">
-    <thead>
+  <!-- Table -->
+  <table class="table table-sm table-striped table-bordered">
+    <thead class="bg-primary text-white">
       <tr>
         <th>Policy Number</th>
         <th>Branch Code</th>
@@ -70,7 +74,7 @@
         <th>End Date</th>
         <th>Customer</th>
         <th>Müşteri</th>
-        <th>Policy Details</th> <!-- Yeni sütun -->
+        <th>Policy Details</th>
       </tr>
     </thead>
     <tbody>
@@ -82,23 +86,21 @@
         <td>{{searchedPolicy.endDate | date:'shortDate'}}</td>
         <td>{{searchedPolicy.customerDetailDto.name}} {{searchedPolicy.customerDetailDto.surname}}</td>
         <td>
-          <!-- Eski Details butonu kalacak -->
-          <button (click)="showDetails(searchedPolicy)" class="btn btn-primary btn-sm">Detay</button>
+          <button (click)="showDetails(searchedPolicy)" class="btn btn-info btn-sm">Detay</button>
         </td>
         <td>
-          <!-- Yeni Policy Details butonu -->
           <button 
-    (click)="openPolicyDetailsModal(searchedPolicy)" 
-    [ngClass]="{
-      'btn-secondary': searchedPolicy.status === 'K',
-      'btn-primary': searchedPolicy.status === 'T',
-      'btn-disabled': searchedPolicy.status === 'K'
-    }"
-    [attr.disabled]="searchedPolicy.status === 'K' ? true : null"
-    class="btn btn-sm"
-  >
-    {{ searchedPolicy.status === 'K' ? 'Poliçelendı' : 'Policy Details' }}
-  </button>
+            (click)="openPolicyDetailsModal(searchedPolicy)" 
+            [ngClass]="{
+              'btn-secondary': searchedPolicy.status === 'K',
+              'btn-primary': searchedPolicy.status === 'T',
+              'btn-disabled': searchedPolicy.status === 'K'
+            }"
+            [attr.disabled]="searchedPolicy.status === 'K' ? true : null"
+            class="btn btn-sm"
+          >
+            {{ searchedPolicy.status === 'K' ? 'Poliçelendı' : 'Policy Details' }}
+          </button>
         </td>
       </tr>
       <ng-template #defaultPolicyList>
@@ -110,28 +112,28 @@
           <td>{{policy.endDate | date:'shortDate'}}</td>
           <td>{{policy.customerDetailDto.name}} {{policy.customerDetailDto.surname}}</td>
           <td>
-            <!-- Eski Details butonu kalacak -->
-            <button (click)="showDetails(policy)" class="btn btn-primary btn-sm">Detay</button>
+            <button (click)="showDetails(policy)" class="btn btn-info btn-sm">Detay</button>
           </td>
           <td>
-            <!-- Yeni Policy Details butonu -->
             <button 
-            (click)="openPolicyDetailsModal(policy)" 
-            [ngClass]="{
-              'btn-secondary': policy.status === 'K',
-              'btn-primary': policy.status === 'T',
-              'btn-disabled': policy.status === 'K'
-            }"
-            [attr.disabled]="policy.status === 'K' ? true : null"
-            class="btn btn-sm"
-          >
-            {{ policy.status === 'K' ? 'Poliçelendi' : 'Poliçelendir' }}
-          </button>
+              (click)="openPolicyDetailsModal(policy)" 
+              [ngClass]="{
+                'btn-secondary': policy.status === 'K',
+                'btn-primary': policy.status === 'T',
+                'btn-disabled': policy.status === 'K'
+              }"
+              [attr.disabled]="policy.status === 'K' ? true : null"
+              class="btn btn-sm"
+            >
+              {{ policy.status === 'K' ? 'Poliçelendi' : 'Poliçelendir' }}
+            </button>
           </td>
         </tr>
       </ng-template>
     </tbody>
   </table>
+
+
 
   <!-- Modal for Policy Details -->
   <div *ngIf="isModalOpen" class="modal-overlay">

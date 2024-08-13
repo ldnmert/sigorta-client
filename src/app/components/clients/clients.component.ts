@@ -48,7 +48,7 @@ export class ClientsComponent {
 
   openModal(): void {
     this.isModalOpen = true;
-    this.cdr.detectChanges(); // Manually trigger change detection
+    this.cdr.detectChanges(); 
   }
 
   closeModal(): void {

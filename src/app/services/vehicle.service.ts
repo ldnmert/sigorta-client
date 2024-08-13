@@ -10,37 +10,34 @@ export class VehicleService {
 
 
  
-  private apiUrl = 'http://localhost:8080/api/vehicles'; // Backend API URL
+  private apiUrl = 'http://localhost:8080/v1/vehicle';// Backend API URL
+  private apiUrl2 = 'http://localhost:8080/v1/vehicleCode';
 
   constructor(private http: HttpClient) { }
 
   getYears(): Observable<string[]> {
     const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.get<string[]>(`${this.apiUrl}/years`,{headers});
+    return this.http.get<string[]>(`${this.apiUrl2}/years`,{headers});
   }
 
   getMakes(): Observable<string[]> {
     const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.get<string[]>(`${this.apiUrl}/makes`,{headers});
+    return this.http.get<string[]>(`${this.apiUrl2}/makes`,{headers});
   }
 
   getModels(make: string): Observable<string[]> {
     const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.get<string[]>(`${this.apiUrl}/models`, { params: { make } , headers});
+    return this.http.get<string[]>(`${this.apiUrl2}/models`, { params: { make } , headers});
   }
 
   getVehicleCode(year: number, make: string, model: string): Observable<any> {
     const token = localStorage.getItem('authToken');
     const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.get<any>(`${this.apiUrl}/vehicle-code`, { params: { year, make, model }, headers });
+    return this.http.get<any>(`${this.apiUrl2}/vehicle-code`, { params: { year, make, model }, headers });
   }
-
-  private apiUrl2 = 'http://localhost:8080/api/v1/insurance'; // Backend API URL
-
-
 
   submitOffer(vehicleCode: string, customerId: number, offerData: any): Observable<PolicyDto> {
     const params = new HttpParams()
@@ -49,6 +46,6 @@ export class VehicleService {
 
       const token = localStorage.getItem('authToken');
       const headers = { 'Authorization': `Bearer ${token}` };
-    return this.http.post<PolicyDto>(`${this.apiUrl2}/car`, offerData, { params , headers});
+    return this.http.post<PolicyDto>(`${this.apiUrl}`, offerData, { params , headers});
   }
 }

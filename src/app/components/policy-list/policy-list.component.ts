@@ -23,12 +23,12 @@ export class PolicyListComponent {
   constructor(private policyService: PolicyService) { }
 
   ngOnInit(): void {
-    this.filterPolicies(); // Load policies with default filter and sort options
+    this.filterPolicies(); 
   }
 
   searchPolicies(): void {
     if (this.searchText.trim() === '') {
-      this.searchedPolicy = null; // Show all policies if search text is empty
+      this.searchedPolicy = null;
     } else {
       this.policyService.searchPolicies(this.searchText.trim()).subscribe(data => {
         this.searchedPolicy = data;
@@ -88,8 +88,7 @@ export class PolicyListComponent {
       };
 
       this.policyService.enablePolicy(this.selectedPolicy.policyNumber, payload).subscribe(response => {
-        alert('Poliçe başarıyla eklendi!');
-        this.closeModal(); // Close th  e modal after successful submission
+        this.closeModal();
       }, error => {
         console.error('Error:', error);
         alert('Bir hata oluştu. Lütfen tekrar deneyin.');
@@ -97,6 +96,5 @@ export class PolicyListComponent {
     } else {
       alert('Lütfen tüm alanları doldurun.');
     }
-    // this.filterPolicies();
   }
 }

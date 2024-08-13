@@ -39,7 +39,7 @@ export class AddPolicyComponent {
 
       this.policyService.enablePolicy(this.selectedPolicy.policyNumber, payload).subscribe(response => {
         alert('Poliçe başarıyla eklendi!');
-        this.closeModal(); // Close th  e modal after successful submission
+        this.closeModal(); 
       }, error => {
         console.error('Error:', error);
         alert('Bir hata oluştu. Lütfen tekrar deneyin.');

@@ -1,31 +1,31 @@
-<div class="container my-3">
-  <h4 class="mb-3">5 Gün İçinde Süresi Dolan Poliçeler</h4>
-  <table class="table table-sm table-bordered">
-    <thead>
-      <tr>
-        <th>Numara</th>
-        <th>Şube Kodu</th>
-        <th>Tutar</th>
-        <th>Başlangıç</th>
-        <th>Bitiş</th>
-        <th>Ad</th>
-        <th>Soyad</th>
-        <th>Detaylar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let policy of expiringPolicies">
-        <td>{{policy.policyNumber}}</td>
-        <td>{{policy.branchCode}}</td>
-        <td>{{policy.amount | currency:'TRY':'symbol':'1.0-2' }}</td>
-        <td>{{policy.startDate | date:'shortDate'}}</td>
-        <td>{{policy.endDate | date:'shortDate'}}</td>
-        <td>{{policy.customerDetailDto.name}}</td>
-        <td>{{policy.customerDetailDto.surname}}</td>
-        <td>
-          <button (click)="showDetails(policy)" class="btn btn-secondary btn-sm">Detaylar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container my-1">
+  <h1 class="mb-4 text-primary">5 Gün İçinde Süresi Dolan Poliçeler</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Numara</th>
+          <th>Şube Kodu</th>
+          <th>Tutar</th>
+          <th>Başlangıç</th>
+          <th>Bitiş</th>
+          <th>Müşteri</th>
+          <th>Müşteri Detayı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of expiringPolicies">
+          <td>{{policy.policyNumber}}</td>
+          <td>{{policy.branchCode}}</td>
+          <td>{{policy.amount | currency:'TRY':'symbol':'1.0-2' }}</td>
+          <td>{{policy.startDate | date:'shortDate'}}</td>
+          <td>{{policy.endDate | date:'shortDate'}}</td>
+          <td>{{policy.customerDetailDto.name}} {{policy.customerDetailDto.surname}}</td>
+          <td>
+            <button (click)="showDetails(policy)" class="btn btn-info btn-sm">Detaylar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
